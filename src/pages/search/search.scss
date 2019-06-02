@@ -1,0 +1,38 @@
+page-search {
+
+    .icon{
+        display: inline;
+    }
+
+    .cardname{
+        display: inline;
+    }
+
+    .setname{
+        font-size: small;
+    }
+
+    .listWrapper{
+        position: relative;
+    }
+    
+    ion-auto-complete ul{
+        left:17px; right:17px;
+        width:auto;
+    }
+
+    ion-row{
+        height: 57px;
+    }
+
+    .list-item{
+        background-color:rgba(255, 255, 255, 0.5);
+    }
+
+    .searchbar-input {
+        border: 0 !important;
+        //box-shadow: none !important;
+    }
+    
+
+}

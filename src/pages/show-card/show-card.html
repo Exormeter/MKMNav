@@ -1,0 +1,153 @@
+<!--
+  Generated template for the ShowCardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{searchedCard?.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-fab bottom right>
+      <button ion-fab mini (click)="addToList()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+  <expandable [expandHeight]="itemExpandHeight" class="settings-expander">
+      <ion-card class="card-settings">
+          <div padding class="card-settings">
+            <ion-segment class="card-settings" [(ngModel)]="settingsService.$currentSettings.$condition" (ionChange)="settingsChange()">
+                <ion-segment-button value="MT">
+                    <span style="background-position: -0px -64px;" class="iconCondition"></span>
+                </ion-segment-button>
+                <ion-segment-button value="NM">
+                    <span style="background-position: -32px -64px;" class="iconCondition"></span>
+                </ion-segment-button>
+                <ion-segment-button value="EX">
+                    <span style="background-position: -64px -64px;" class="iconCondition"></span>
+                </ion-segment-button>
+                <ion-segment-button value="GD">
+                    <span style="background-position: -96px -64px;" class="iconCondition"></span>
+                </ion-segment-button>
+                <ion-segment-button value="LP">
+                    <span style="background-position: -128px -64px;" class="iconCondition"></span>
+                </ion-segment-button>
+                <ion-segment-button value="PL">
+                    <span style="background-position: -160px -64px;" class="iconCondition"></span>
+                </ion-segment-button>
+                <ion-segment-button value="PO">
+                    <span style="background-position: -192px -64px;" class="iconCondition"></span>
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+        <ion-item class="card-settings">
+            <ion-label>Is Foil</ion-label>
+            <ion-toggle [(ngModel)]="settingsService.$currentSettings.$isFoil" (ionChange)="settingsChange()" ></ion-toggle>
+        </ion-item>
+        <ion-item class="card-settings">
+          <ion-label>Card Language</ion-label>
+          <ion-select [interface]="action-sheet" [(ngModel)]="settingsService.$currentSettings.$cardLanguage" (ngModelChange)="settingsChange()">
+            <ion-option *ngFor="let language of settingsService.cardLanguages">{{language}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="card-settings">
+            <ion-label>Seller Country</ion-label>
+            <ion-select multiple="true" [(ngModel)]="settingsService.$currentSettings.$allowedOriginCountries" (ngModelChange)="settingsChange()">
+              <ion-option *ngFor="let language of settingsService.originCountriesNames">{{language}}</ion-option>
+            </ion-select>
+        </ion-item>
+      </ion-card>
+  </expandable>
+
+  <ion-item class="card-item">
+      <flash-card [imageURLfrontSide]="imageURLfront" [imageURLbackSide]="imageURLback" [allowedToFlip]="true">
+        </flash-card>
+  </ion-item>
+  <ion-list class="price-list">
+
+      <ion-item class="price-item">
+          <ion-icon name="trending-down" item-start></ion-icon>
+            Lowest Price
+          <p item-end>{{numberFormat.formatNumber(currentProduct?.priceGuide?.LOW)}}</p>
+      </ion-item>
+
+      <!-- <ion-item class="price-item">
+        <ion-icon name="git-commit" item-start></ion-icon>
+          Avarage Price
+        <p item-end>{{numberFormat.formatNumber(currentProduct?.priceGuide?.AVG)}}</p>
+      </ion-item> -->
+      
+      <ion-item class="price-item">
+        <ion-icon name="pulse" item-start></ion-icon>
+          First EX Price
+        <p item-end>{{numberFormat.formatNumber(currentProduct?.priceGuide?.LOWEX)}}</p>
+      </ion-item>
+
+      <ion-item class="price-item">
+        <ion-icon name="trending-up" item-start></ion-icon>
+          Price Trend
+        <p item-end>{{numberFormat.formatNumber(currentProduct?.priceGuide?.TREND)}}</p>
+      </ion-item>
+
+    </ion-list>
+  <ion-item class="card-item">
+      <ion-slides (ionSlideReachEnd)="prepareNextSlide()">
+          <ion-slide *ngFor="let slide of currentShownArticle">
+            <ion-card class="slide-card">
+              <ion-row>
+                <ion-col>
+                  <p text-left>Price: </p>
+                </ion-col>
+                <ion-col>
+                  <p text-right>{{numberFormat.formatNumber(slide?.price)}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                    <p text-left>Playset: </p>
+                  </ion-col>
+                  <ion-col>
+                    <p text-right>{{slide?.isPlayset? "Yes" : "No"}}</p>
+                  </ion-col>
+                </ion-row>
+              <ion-row>
+                  <ion-col>
+                    <p text-left>Seller: </p>
+                  </ion-col>
+                  <ion-col>
+                    <p text-right>{{slide?.seller.username}}</p>
+                  </ion-col>
+                </ion-row>
+              <ion-row>
+                <ion-col>
+                  <p text-left>Card Language:</p>
+                </ion-col>
+                <ion-col>
+                  <p text-right>{{slide?.language.languageName}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                    <p text-left>Seller Country: </p>
+                  </ion-col>
+                  <ion-col>
+                      <span [class]="'flag-icon flag-icon-' + slide?.seller.address.country.toLowerCase()"></span>
+                  </ion-col>
+                </ion-row>
+              <ion-row>
+                  <ion-col>
+                    <p text-left>Condition: </p>
+                  </ion-col>
+                  <ion-col>
+                      <span [class]="'condition' + slide?.condition"></span>
+                  </ion-col>
+                </ion-row>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+  </ion-item>
+  
+</ion-content>

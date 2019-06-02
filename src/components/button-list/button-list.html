@@ -1,0 +1,14 @@
+<!-- Generated template for the ButtonListComponent component -->
+<button (click)="toggle()">
+    <span class='flag flag-icon flag-icon-{{selectedLanguage}}'></span>
+</button>
+<div [@listAnimation]="shownLanguages.length"
+    (@listAnimation.start)="logAnimation($event)"
+    (@listAnimation.done)="logAnimation($event)"
+>
+  <div class='languageContainer' *ngFor="let item of shownLanguages">
+    <button (click)="onClickLanguage(item)">
+        <span [class]="'flag flag-icon flag-icon-' + item"></span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+{
+  "name": "TradeCompanion",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

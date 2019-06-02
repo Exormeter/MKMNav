@@ -1,0 +1,40 @@
+page-trade-list {
+
+    .icon{
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .cardSet{
+        display: inline-block;
+        vertical-align: middle;
+        font-size: small;
+    }
+
+
+    .side-crop { 
+        max-width: 90px; 
+        max-height: 60px;
+        text-indent: -10px;
+        overflow: hidden; 
+    }
+
+    .side-crop img { 
+        width: 111px;
+        height: auto;
+        max-width: initial; 
+        max-height: initial;
+        margin-top: -19px;
+        /* Maybe optional. See note below */
+    }
+
+    .sumFooter{
+        font-size: large;
+        text-align: center;
+    }
+
+    .list-item{
+        background-color:rgba(255, 255, 255, 0.4);
+    }
+
+}

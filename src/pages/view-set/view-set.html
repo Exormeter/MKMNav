@@ -1,0 +1,66 @@
+<!--
+  Generated template for the ViewSetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button class="hack" ion-button menuToggle="left" right>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{expansion?.enName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding #pageTop>
+    <ion-list [hidden]="!listViewSettings.listViewActive">
+        <ng-container *ngFor="let single of singleListSorted" >
+            <ion-item class="list-item" (click)="singleSelected(single)">
+                <h2 class="cardname">{{single.enName}}</h2>
+                <ss-icon class="icon" rarity={{sanitizeRarity(single)}} name={{expansion.abbreviation.toLowerCase()}} fixed-width></ss-icon>
+                <p class="setname">{{single.rarity}}</p>
+                <p item-end class="cardPrice">{{numberformatter.formatNumber(single.priceGuide.LOW)}}</p>
+            </ion-item>
+        </ng-container>
+      </ion-list>
+
+        <!-- <ion-list [hidden]="!listViewSettings.listGalleryActive"> -->
+    <!-- <div *ngIf="listViewSettings.listGalleryActive"> -->
+      <ion-list [hidden]="!listViewSettings.listGalleryActive" #virtualScroll [virtualScroll]="singleListSortedGallery" approxItemHeight="250px">
+          <ng-container *virtualItem="let single">
+          <ion-card class="list-item"  (click)="singleSelected(single)">
+            <ion-card-header class="ion-card-header">
+              {{single.enName}}
+            </ion-card-header>
+            <ion-card-content>
+                <flash-card [imageURLfrontSide]="single.image" [allowedToFlip]="false"></flash-card>
+                <div class="informationGrid">
+                    <ion-row>
+                        <ion-col>
+                          <p class="text" text-left>Price: </p>
+                        </ion-col>
+                        <ion-col>
+                          <p class="text" text-right>{{numberformatter.formatNumber(single.priceGuide.LOW)}}</p>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                          <ion-col>
+                            <p class="text" text-left>Rarity: </p>
+                          </ion-col>
+                          <ion-col>
+                            <ss-icon class="set-icon" rarity={{sanitizeRarity(single)}} name={{expansion.abbreviation.toLowerCase()}} fixed-width></ss-icon>
+                          </ion-col>
+                        </ion-row>
+                </div>
+                
+            </ion-card-content>
+          </ion-card>
+        </ng-container>
+      </ion-list>
+    <!-- </div> -->
+</ion-content>
+

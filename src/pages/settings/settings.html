@@ -1,0 +1,70 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Default Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+    <div padding>
+        <ion-segment [(ngModel)]="settingsService.$defaultSettings.$condition">
+            <ion-segment-button value="MT">
+                <span style="background-position: -0px -64px;" class="icon"></span>
+            </ion-segment-button>
+            <ion-segment-button value="NM">
+                <span style="background-position: -32px -64px;" class="icon"></span>
+            </ion-segment-button>
+            <ion-segment-button value="EX">
+                <span style="background-position: -64px -64px;" class="icon"></span>
+            </ion-segment-button>
+            <ion-segment-button value="GD">
+                <span style="background-position: -96px -64px;" class="icon"></span>
+            </ion-segment-button>
+            <ion-segment-button value="LP">
+                <span style="background-position: -128px -64px;" class="icon"></span>
+            </ion-segment-button>
+            <ion-segment-button value="PL">
+                <span style="background-position: -160px -64px;" class="icon"></span>
+            </ion-segment-button>
+            <ion-segment-button value="PO">
+                <span style="background-position: -192px -64px;" class="icon"></span>
+            </ion-segment-button>
+        </ion-segment>
+      </div>
+      <ion-item class="card-settings">
+          <ion-label>Is Foil</ion-label>
+          <ion-toggle [(ngModel)]="settingsService.$defaultSettings.$isFoil"></ion-toggle>
+      </ion-item>
+      <ion-item class="card-settings">
+        <ion-label>Card Language</ion-label>
+        <ion-select [interface]="action-sheet" [(ngModel)]="settingsService.$defaultSettings.$cardLanguage">
+          <ion-option *ngFor="let language of settingsService.cardLanguages">{{language}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="card-settings"> 
+          <ion-label>Seller Country</ion-label>
+          <ion-select multiple="true" [(ngModel)]="settingsService.$defaultSettings.$allowedOriginCountries">
+            <ion-option *ngFor="let language of settingsService.originCountriesNames">{{language}}</ion-option>
+          </ion-select>
+      </ion-item>
+    <ion-item class="card-settings">
+        <ion-label>Currency</ion-label>
+        <ion-select multiple="false" [(ngModel)]="settingsService.$defaultSettings.$currency">
+            <ion-option *ngFor="let currency of settingsService.currency">{{currency}}</ion-option>
+        </ion-select>
+        </ion-item>
+</ion-content>
+<ion-footer no-shadow>
+    <button ion-button block (click)=saveSettings()>Save Settings</button>
+</ion-footer>
+
+

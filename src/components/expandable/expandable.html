@@ -1,0 +1,4 @@
+<ion-icon float-right [name]="expanded? 'arrow-dropdown' : 'arrow-dropup'" (click)="expand()" style="zoom:1.7"></ion-icon> 
+<div #expandWrapper class='expand-wrapper' [class.collapsed]="!expanded">
+  <ng-content></ng-content>
+</div>

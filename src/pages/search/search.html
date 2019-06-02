@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Search</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-10>
+        <ion-auto-complete class="searchbar-input" [dataProvider]="searchAutocompleteService" (autoFocus)="onFocusSearchbar($event)" (itemSelected)="chooseCard($event)"></ion-auto-complete>
+      </ion-col>
+      <ion-col>
+        <button-list (click)="setLanguage()"></button-list>
+      </ion-col>
+  </ion-row>
+  </ion-grid>
+  
+  <div class="listWrapper">
+    <ion-list>
+        <ng-container *ngFor="let card of cardVersions">
+          <ion-item *ngIf="!card.digital" (click)="itemSelected(card)" class="list-item">
+              <ss-icon class="icon" name={{card.set.toLowerCase()}}></ss-icon>
+              <h2 class="cardname">{{card.foreign_name}}</h2>
+              <p class="setname">{{card.set_name}}</p>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+  </div>
+  
+</ion-content>

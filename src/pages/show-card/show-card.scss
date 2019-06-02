@@ -1,0 +1,115 @@
+page-show-card {
+    .fab-container {
+        position: relative;
+      }
+
+
+    .flag-icon{
+        float: right;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+    .iconCondition{
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../assets/imgs/smile.png");
+    }
+
+    .card-item{
+        border-color: rgba(0, 0, 0, 0);
+	    background-color: rgba(0, 0, 0, 0);
+        color: white; 
+    }
+
+    .slide-card{
+        background-color:rgba(192, 232, 241, 0.302);
+    }
+
+    .card-settings{
+        background-color:rgba(255, 255, 255, 0);
+    }
+
+    .price-list{
+        margin-bottom: 0;
+        background-color:rgba(255, 255, 255, 0);
+    }
+
+    .price-item{
+        background-color:rgba(255, 255, 255, 0.5);
+    }
+
+    .conditionMT{
+        float: right;
+        width: 16px;
+        height: 16px;
+        background-image: url("../assets/imgs/smile.png");
+        background-position: -0px -64px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+    .conditionNM{
+        float: right;
+        width: 16px;
+        height: 16px;
+        background-image: url("../assets/imgs/smile.png");
+        background-position: -32px -64px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+    .conditionEX{
+        float: right;
+        width: 16px;
+        height: 16px;
+        background-image: url("../assets/imgs/smile.png");
+        background-position: -64px -64px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+    .conditionGD{
+        float: right;
+        width: 16px;
+        height: 16px;
+        background-image: url("../assets/imgs/smile.png");
+        background-position: -96px -64px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+    .conditionLP{
+        float: right;
+        width: 16px;
+        height: 16px;
+        background-image: url("../assets/imgs/smile.png");
+        background-position: -128px -64px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+    .conditionPL{
+        float: right;
+        width: 16px;
+        height: 16px;
+        background-image: url("../assets/imgs/smile.png");
+        background-position: -160px -64px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+    .conditionPO{
+        float: right;
+        width: 16px;
+        height: 16px;
+        background-image: url("../assets/imgs/smile.png");
+        background-position: -192px -64px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+
+
+}
+

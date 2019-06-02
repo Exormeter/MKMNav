@@ -1,0 +1,49 @@
+<!--
+  Generated template for the TradeListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Trade List</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="clear()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let card of tradeListService.tradeList; let i = index" class="list-item">
+        <ion-item class="list-item">
+            <div item-start class="side-crop">
+              <img src="{{card.scryfallCard?.image_uris.normal}}">
+            </div>
+          <h2 class="cardName">{{card.scryfallCard.name}}</h2>
+          <p item-end class="cardPrice">{{numberFormatter.formatNumber(card.article.price)}}</p>
+          <div class="setInfo">
+              <ss-icon class="icon" name={{card.scryfallCard.set}}></ss-icon>
+              <p class="cardSet">{{card.scryfallCard.set_name}}</p>
+          </div>
+        </ion-item>
+        <ion-item-options side="right">
+            <button ion-button icon-only color="danger" (click)="delete(i)">
+                <ion-icon name="trash"></ion-icon>
+            </button>
+        </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <div class="sumFooter">
+      Total Sum: {{numberFormatter.formatNumber(tradeListService?.getTotalSum())}}
+  </div>
+</ion-footer>

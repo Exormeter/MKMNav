@@ -1,0 +1,51 @@
+
+
+
+<ion-menu side="left" type="reveal" [content]="listMenu">
+        
+        <ion-content>
+            <ion-segment [(ngModel)]="listViewSettings.$listOrder" color="primary" (ionChange)="listViewSettings.chooseSortingOrder($event)">
+                <ion-segment-button value="Ascending">
+                  Ascending
+                </ion-segment-button>
+                <ion-segment-button value="Descending">
+                  Descending
+                </ion-segment-button>
+            </ion-segment>
+          <ion-list>
+              <ion-list-header>
+                  Sort by
+                </ion-list-header>
+                <ion-item (click)="listViewSettings.sortByAlphabet()">
+                    <ion-icon name="paper" item-start></ion-icon>
+                    <ion-icon [hidden]="listViewSettings.sortedByAlphabet" name="checkmark" item-end></ion-icon>
+                      Alphabet
+                </ion-item>
+                <ion-item (click)="listViewSettings.sortByRarity()">
+                    <ion-icon name="star-half" item-start></ion-icon>
+                    <ion-icon [hidden]="listViewSettings.sortedByRarity" name="checkmark" item-end></ion-icon>
+                      Rarity
+                </ion-item>
+                <ion-item (click)="listViewSettings.sortByPrice()">
+                    <ion-icon name="logo-euro" item-start size="small"></ion-icon>
+                    <ion-icon [hidden]="listViewSettings.sortedByPrice" name="checkmark" item-end></ion-icon>
+                    Price
+                </ion-item>
+          </ion-list>
+          <ion-list>
+            <ion-list-header>
+              View
+            </ion-list-header>
+            <ion-item (click)=listViewSettings.changeToListView()>
+                <ion-icon [hidden]="!listViewSettings.listViewActive" name="checkmark" item-end></ion-icon>
+              List
+            </ion-item>
+            <ion-item (click)=listViewSettings.changeToGalleryView()>
+                <ion-icon [hidden]="!listViewSettings.listGalleryActive" name="checkmark" item-end></ion-icon>
+              Gallery
+            </ion-item>
+          </ion-list>
+        </ion-content>
+</ion-menu>
+
+<ion-nav #listMenu [root]="rootPage"></ion-nav>

@@ -1,0 +1,11 @@
+<div class="flip-container" #fcContainer>
+    <div class="flipper" [class.flip]="toggled" (click)="toggle()">
+      <div class="front" #front>
+        <img src="{{placeholder}}"><img>
+      </div>
+      <div class="back" #back>
+          <img class="image" src="{{imageURLfrontSide}}" (load)="flipOnce()"><img>
+       
+      </div>
+    </div>
+  </div>
